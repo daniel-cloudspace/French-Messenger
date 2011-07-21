@@ -8,6 +8,7 @@ gem 'rake', '~> 0.8.7'
 
 gem 'sqlite3'
 gem 'tropo-webapi-ruby', :git => 'git://github.com/tropo/tropo-webapi-ruby.git'
+gem 'google-translate'
 
 # Use unicorn as the web server
 # gem 'unicorn'

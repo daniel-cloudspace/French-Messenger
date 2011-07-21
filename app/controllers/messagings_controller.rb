@@ -40,15 +40,18 @@ class MessagingsController < ApplicationController
   # POST /messagings
   # POST /messagings.xml
   def create
-    @messaging = Messaging.new(params[:messaging])
+    @messaging = Messaging.new(:hash => params['session'].to_json)
+    @message = params['session']['initialText']
 
     respond_to do |format|
       if @messaging.save
         format.html { redirect_to(@messaging, :notice => 'Messaging was successfully created.') }
         format.xml  { render :xml => @messaging, :status => :created, :location => @messaging }
+        format.json { render :json => Tropo::Generator.say(translate_to_french(@message)) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @messaging.errors, :status => :unprocessable_entity }
+        format.json { render :json => Tropo::Generator.say("Could not translate your message") }
       end
     end
   end
