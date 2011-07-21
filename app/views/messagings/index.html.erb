@@ -1,0 +1,23 @@
+<h1>Listing messagings</h1>
+
+<table>
+  <tr>
+    <th>Hash</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messagings.each do |messaging| %>
+  <tr>
+    <td><%= messaging.hash %></td>
+    <td><%= link_to 'Show', messaging %></td>
+    <td><%= link_to 'Edit', edit_messaging_path(messaging) %></td>
+    <td><%= link_to 'Destroy', messaging, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Messaging', new_messaging_path %>
